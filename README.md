@@ -4,6 +4,10 @@
 
 Python-GVAS-JSON-Converter (SavConverter) is a library designed to convert Unreal Engine's Game Variable and Attribute System (GVAS) files between `.sav` and `.json` formats. It provides a way to read and interpret the binary structure of `.sav` files and translate them into human-readable JSON format, as well as convert JSON back to the original `.sav` format.
 
+## Update to UE5
+
+- **File SavProperties**: Class `HeaderProperty` didn't read some bytes (int32) after reading engine build field. The length of the engine branch string was calculated incorrectly because of this. It was fixed by forced reading int32 bytes after engine build reading and named `engine_build_` because these bytes are still unknown. You can use `read_sav` and `sav_to_json` functions from author's library with modified `HeaderProperty` class clearly.
+
 ## Features
 
 - **Convert from .sav to .json**: Supports converting Unreal Engine's `.sav` files into `.json` format.
